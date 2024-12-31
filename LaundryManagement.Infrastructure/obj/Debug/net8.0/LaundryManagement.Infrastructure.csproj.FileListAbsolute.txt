@@ -1,0 +1,14 @@
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\bin\Debug\net8.0\LaundryManagement.Infrastructure.deps.json
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\bin\Debug\net8.0\LaundryManagement.Infrastructure.runtimeconfig.json
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\bin\Debug\net8.0\LaundryManagement.Infrastructure.dll
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\bin\Debug\net8.0\LaundryManagement.Infrastructure.pdb
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.dll
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\refint\LaundryManagement.Infrastructure.dll
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.pdb
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\LaundryManagement.Infrastructure.genruntimeconfig.cache
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.Infrastructure\obj\Debug\net8.0\ref\LaundryManagement.Infrastructure.dll

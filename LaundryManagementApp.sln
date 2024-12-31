@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundryManagement.API", "LaundryManagementApp\LaundryManagement.API.csproj", "{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{5920DA0F-4AB3-47DB-9A49-7DDE14E040F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{F66B53D6-5A4B-49C9-829B-D91FDB64C299}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulation", "Simulation", "{70662C96-86F7-4569-A11C-3B21F85ECCFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundryManagement.Infrastructure", "LaundryManagement.Infrastructure\LaundryManagement.Infrastructure.csproj", "{3FB85BC5-11F9-4980-A92D-E20E39CF3A35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundryManagement.SimulationApp", "LaundryManagement.SimulationApp\LaundryManagement.SimulationApp.csproj", "{96FC40E4-C9FB-4385-B892-2D321144A90D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB85BC5-11F9-4980-A92D-E20E39CF3A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB85BC5-11F9-4980-A92D-E20E39CF3A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB85BC5-11F9-4980-A92D-E20E39CF3A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB85BC5-11F9-4980-A92D-E20E39CF3A35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96FC40E4-C9FB-4385-B892-2D321144A90D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96FC40E4-C9FB-4385-B892-2D321144A90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96FC40E4-C9FB-4385-B892-2D321144A90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96FC40E4-C9FB-4385-B892-2D321144A90D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D4F1DF19-61F3-4CCF-BA4C-42630242F6EC} = {5920DA0F-4AB3-47DB-9A49-7DDE14E040F4}
+		{3FB85BC5-11F9-4980-A92D-E20E39CF3A35} = {F66B53D6-5A4B-49C9-829B-D91FDB64C299}
+		{96FC40E4-C9FB-4385-B892-2D321144A90D} = {70662C96-86F7-4569-A11C-3B21F85ECCFF}
+	EndGlobalSection
+EndGlobal
