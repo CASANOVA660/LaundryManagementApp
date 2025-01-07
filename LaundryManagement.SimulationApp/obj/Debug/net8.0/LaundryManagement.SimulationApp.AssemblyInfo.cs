@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LaundryManagement.SimulationApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dfeaf8486f4d9bf17ceb9b5a6bf04f3340f33d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("LaundryManagement.SimulationApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LaundryManagement.SimulationApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

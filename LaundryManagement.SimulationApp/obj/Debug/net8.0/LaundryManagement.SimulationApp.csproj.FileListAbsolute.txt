@@ -132,3 +132,4 @@ C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.SimulationApp
 C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.SimulationApp\bin\Debug\net8.0\LaundryManagement.API.pdb
 C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.SimulationApp\obj\Debug\net8.0\LaundryManagement.SimulationApp.csproj.AssemblyReference.cache
 C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.SimulationApp\obj\Debug\net8.0\LaundryM.EC852363.Up2Date
+C:\Users\boual\source\repos\LaundryManagementApp\LaundryManagement.SimulationApp\obj\Debug\net8.0\LaundryManagement.SimulationApp.sourcelink.json

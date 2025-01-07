@@ -41,58 +41,74 @@ namespace LaundryManagement.SimulationApp
 
         static async Task Register(LaundryDbContext context)
         {
-            Console.WriteLine("Are you a client or an owner?");
-            Console.WriteLine("1. Client");
-            Console.WriteLine("2. Owner");
-            Console.Write("Choose an option: ");
-            var userType = Console.ReadLine();
-
-            Console.Write("Enter your last name (Nom): ");
-            var nom = Console.ReadLine();
-
-            Console.Write("Enter your first name (Prenom): ");
-            var prenom = Console.ReadLine();
-
-            Console.Write("Enter your email: ");
-            var email = Console.ReadLine();
-
-            Console.Write("Enter your password: ");
-            var password = Console.ReadLine();
-
-            if (userType == "1")
+            try
             {
-                var client = new Client
+                Console.WriteLine("Are you a client or an owner?");
+                Console.WriteLine("1. Client");
+                Console.WriteLine("2. Owner");
+                Console.Write("Choose an option: ");
+                var userType = Console.ReadLine();
+
+                Console.Write("Enter your last name (Nom): ");
+                var nom = Console.ReadLine();
+
+                Console.Write("Enter your first name (Prenom): ");
+                var prenom = Console.ReadLine();
+
+                Console.Write("Enter your email: ");
+                var email = Console.ReadLine();
+
+                Console.Write("Enter your password: ");
+                var password = Console.ReadLine();
+
+                if (userType == "1")
                 {
-                    Nom = nom,
-                    Prenom = prenom, // Add Prenom for client
-                    Email = email,
-                    Password = password // In a real app, hash the password
-                };
-                context.Clients.Add(client);
-            }
-            else if (userType == "2")
-            {
-                Console.Write("Enter your phone number: ");
-                var phone = Console.ReadLine();
+                    // Prompt for phone number for clients
+                    Console.Write("Enter your phone number: ");
+                    var phone = Console.ReadLine();
 
-                var owner = new Owner
+                    var client = new Client
+                    {
+                        Nom = nom,
+                        Prenom = prenom,
+                        Email = email,
+                        Password = password,
+                        Phone = phone // Add the phone number
+                    };
+                    context.Clients.Add(client);
+                }
+                else if (userType == "2")
                 {
-                    Nom = nom,
-                    Prenom = prenom, // Add Prenom for owner
-                    Email = email,
-                    Password = password, // In a real app, hash the password
-                    Phone = phone // Add the phone number
-                };
-                context.Owners.Add(owner);
-            }
-            else
-            {
-                Console.WriteLine("Invalid option.");
-                return;
-            }
+                    Console.Write("Enter your phone number: ");
+                    var phone = Console.ReadLine();
 
-            await context.SaveChangesAsync();
-            Console.WriteLine("Registration successful!");
+                    var owner = new Owner
+                    {
+                        Nom = nom,
+                        Prenom = prenom,
+                        Email = email,
+                        Password = password, 
+                        Phone = phone // Add the phone number
+                    };
+                    context.Owners.Add(owner);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option.");
+                    return;
+                }
+
+                await context.SaveChangesAsync();
+                Console.WriteLine("Registration successful!");
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"An error occurred while saving changes: {ex.InnerException?.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
         }
 
         static async Task Login(LaundryDbContext context)
@@ -322,20 +338,95 @@ namespace LaundryManagement.SimulationApp
 
         static async Task AddMachine(LaundryDbContext context, int ownerId)
         {
-            Console.Write("Enter Machine Type (e.g., Washer, Dryer): ");
-            var type = Console.ReadLine();
-
-            var machine = new Machine
+            try
             {
-                Type = type,
-                Status = "Available",
-                IdLaundry = ownerId // Assuming ownerId is linked to a laundry
-            };
+                // Check if the owner has a corresponding Laundry record
+                var laundry = await context.Laundries.FirstOrDefaultAsync(l => l.IdProprietaire == ownerId);
 
-            context.Machines.Add(machine);
-            await context.SaveChangesAsync();
+                if (laundry == null)
+                {
+                    // If no Laundry record exists, create one
+                    laundry = new Laundry
+                    {
+                        IdProprietaire = ownerId,
+                        Nom = "Default Laundry Name" // Set a default name or prompt the user for input
+                    };
+                    context.Laundries.Add(laundry);
+                    await context.SaveChangesAsync(); // Save the new Laundry record
+                }
 
-            Console.WriteLine($"Machine {machine.Id} added.");
+                // Prompt for machine type
+                Console.Write("Enter Machine Type (e.g., Washer, Dryer): ");
+                var machineType = Console.ReadLine();
+
+                // Create the machine
+                var machine = new Machine
+                {
+                    Type = machineType,
+                    Status = "Available",
+                    IdLaundry = laundry.Id // Use the Id of the Laundry record
+                };
+
+                // Add cycles to the machine
+                var cycles = new List<Cycle>();
+                while (true)
+                {
+                    Console.WriteLine("\nAdd a cycle for the machine (or type 'done' to finish):");
+                    Console.Write("Enter Cycle Type (e.g., Normal, Delicate): ");
+                    var cycleType = Console.ReadLine();
+
+                    if (cycleType.ToLower() == "done")
+                        break;
+
+                    Console.Write("Enter Cycle Cost: ");
+                    if (!decimal.TryParse(Console.ReadLine(), out decimal cycleCost))
+                    {
+                        Console.WriteLine("Invalid cost. Please enter a valid number.");
+                        continue;
+                    }
+
+                    Console.Write("Enter Cycle Duration (in minutes): ");
+                    if (!int.TryParse(Console.ReadLine(), out int cycleDuration))
+                    {
+                        Console.WriteLine("Invalid duration. Please enter a valid number.");
+                        continue;
+                    }
+
+                    // Create the cycle
+                    var cycle = new Cycle
+                    {
+                        Type = cycleType,
+                        Cost = cycleCost,
+                        Duration = cycleDuration,
+                        IdMachine = machine.Id // This will be set after the machine is saved
+                    };
+
+                    cycles.Add(cycle);
+                }
+
+                // Add the machine to the context
+                context.Machines.Add(machine);
+                await context.SaveChangesAsync(); // Save the machine to generate its Id
+
+                // Set the IdMachine for each cycle and add them to the context
+                foreach (var cycle in cycles)
+                {
+                    cycle.IdMachine = machine.Id;
+                    context.Cycles.Add(cycle);
+                }
+
+                await context.SaveChangesAsync(); // Save the cycles
+
+                Console.WriteLine($"Machine {machine.Id} added with {cycles.Count} cycle(s).");
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"An error occurred while adding the machine: {ex.InnerException?.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
         }
 
         static async Task RemoveMachine(LaundryDbContext context)
