@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using LaundryManagement.API.Interfaces;
+using LaundryManagement.Infrastructure.Models;
 
 namespace LaundryManagementSystem.API.Controllers
 {
@@ -15,25 +16,17 @@ namespace LaundryManagementSystem.API.Controllers
             _incomeService = incomeService;
         }
 
-        // GET: api/Income/Daily
-        [HttpGet("Daily")]
-        public async Task<ActionResult<decimal>> GetDailyIncome()
+        // GET: api/Income
+        [HttpGet]
+        public async Task<ActionResult<Income>> GetIncome()
         {
-            return await _incomeService.GetDailyIncome();
-        }
-
-        // GET: api/Income/Monthly
-        [HttpGet("Monthly")]
-        public async Task<ActionResult<decimal>> GetMonthlyIncome()
-        {
-            return await _incomeService.GetMonthlyIncome();
-        }
-
-        // GET: api/Income/Yearly
-        [HttpGet("Yearly")]
-        public async Task<ActionResult<decimal>> GetYearlyIncome()
-        {
-            return await _incomeService.GetYearlyIncome();
+            var income = new Income
+            {
+                Daily = await _incomeService.GetDailyIncome(),
+                Monthly = await _incomeService.GetMonthlyIncome(),
+                Yearly = await _incomeService.GetYearlyIncome()
+            };
+            return income;
         }
     }
 }

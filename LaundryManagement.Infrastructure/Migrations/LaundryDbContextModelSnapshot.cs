@@ -117,6 +117,15 @@ namespace LaundryManagement.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CurrentCycleEndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CurrentCycleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CurrentCycleStartTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdLaundry")
                         .HasColumnType("int");
 
@@ -129,6 +138,8 @@ namespace LaundryManagement.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrentCycleId");
 
                     b.HasIndex("IdLaundry");
 
@@ -180,16 +191,24 @@ namespace LaundryManagement.Infrastructure.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CycleId")
+                    b.Property<int>("IdClient")
                         .HasColumnType("int");
 
-                    b.Property<int>("MachineId")
+                    b.Property<int>("IdCycle")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdClient");
+
+                    b.HasIndex("IdCycle");
 
                     b.ToTable("Transactions");
                 });
@@ -218,13 +237,38 @@ namespace LaundryManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("LaundryManagement.Infrastructure.Models.Machine", b =>
                 {
+                    b.HasOne("LaundryManagement.Infrastructure.Models.Cycle", "CurrentCycle")
+                        .WithMany()
+                        .HasForeignKey("CurrentCycleId");
+
                     b.HasOne("LaundryManagement.Infrastructure.Models.Laundry", "Laundry")
                         .WithMany("Machines")
                         .HasForeignKey("IdLaundry")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CurrentCycle");
+
                     b.Navigation("Laundry");
+                });
+
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Models.Transaction", b =>
+                {
+                    b.HasOne("LaundryManagement.Infrastructure.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LaundryManagement.Infrastructure.Models.Cycle", "Cycle")
+                        .WithMany()
+                        .HasForeignKey("IdCycle")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Cycle");
                 });
 
             modelBuilder.Entity("LaundryManagement.Infrastructure.Models.Laundry", b =>

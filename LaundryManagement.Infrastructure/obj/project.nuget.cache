@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w+rA93LcFN4=",
+  "dgSpecHash": "aMn/xLV6pco=",
   "success": true,
-  "projectFilePath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boual\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -22,7 +22,6 @@
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.0\\microsoft.entityframeworkcore.design.8.0.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\8.0.0\\microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512",
-    "C:\\Users\\boual\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\8.0.0\\microsoft.entityframeworkcore.tools.8.0.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "C:\\Users\\boual\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

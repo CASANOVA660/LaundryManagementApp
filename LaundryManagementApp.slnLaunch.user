@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "LaundryManagementApp\\LaundryManagement.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "LaundryManagement.SimulationApp\\LaundryManagement.SimulationApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj": {}
+    "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj": {
+    "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
         "projectName": "LaundryManagement.Infrastructure",
-        "projectPath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\boual\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -64,12 +64,6 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -92,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj": {
+    "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj",
+        "projectUniqueName": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj",
         "projectName": "LaundryManagement.API",
-        "projectPath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj",
+        "projectPath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagementApp\\LaundryManagement.API.csproj",
         "packagesPath": "C:\\Users\\boual\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagementApp\\obj\\",
+        "outputPath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagementApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -121,8 +115,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\boual\\source\\repos\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj"
+              "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\boual\\OneDrive\\Desktop\\LaundryManagementApp\\LaundryManagement.Infrastructure\\LaundryManagement.Infrastructure.csproj"
               }
             }
           }
@@ -143,23 +137,31 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using LaundryManagement.API.Interfaces;
 using LaundryManagement.Infrastructure.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LaundryManagement.API.Interfaces;
 
-namespace LaundryManagementSystem.API.Controllers
+namespace LaundryManagement.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]s")]
     public class MachineController : ControllerBase
     {
         private readonly IMachineService _machineService;
@@ -17,7 +17,6 @@ namespace LaundryManagementSystem.API.Controllers
             _machineService = machineService;
         }
 
-        // GET: api/Machine
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Machine>>> GetMachines()
         {
@@ -25,7 +24,6 @@ namespace LaundryManagementSystem.API.Controllers
             return Ok(machines);
         }
 
-        // GET: api/Machine/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Machine>> GetMachine(int id)
         {
@@ -34,23 +32,107 @@ namespace LaundryManagementSystem.API.Controllers
             {
                 return NotFound();
             }
-            return machine;
+            return Ok(machine);
         }
 
-        // POST: api/Machine
+        public class CreateMachineRequest
+        {
+            public string Type { get; set; }
+            public string Status { get; set; }
+            public int IdLaundry { get; set; }
+        }
+
+        // POST: api/machines
         [HttpPost]
-        public async Task<ActionResult<Machine>> AddMachine([FromBody] Machine machine)
+        public async Task<ActionResult<Machine>> AddMachine([FromBody] CreateMachineRequest request)
         {
-            var addedMachine = await _machineService.AddMachine(machine);
-            return CreatedAtAction(nameof(GetMachine), new { id = addedMachine.Id }, addedMachine);
+            try
+            {
+                if (request == null)
+                {
+                    return BadRequest("Machine data is null");
+                }
+
+                if (string.IsNullOrEmpty(request.Type))
+                {
+                    return BadRequest("Machine type is required");
+                }
+
+                if (request.IdLaundry <= 0)
+                {
+                    return BadRequest("Valid laundry ID is required");
+                }
+
+                var machine = new Machine
+                {
+                    Type = request.Type,
+                    Status = request.Status ?? "Available",
+                    IdLaundry = request.IdLaundry
+                };
+
+                var addedMachine = await _machineService.AddMachine(machine);
+                return CreatedAtAction(nameof(GetMachine), new { id = addedMachine.Id }, addedMachine);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
-        // DELETE: api/Machine/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveMachine(int id)
+        [HttpPost("{id}/start")]
+        public async Task<ActionResult<Machine>> StartCycle(int id, [FromBody] int cycleId)
         {
-            await _machineService.RemoveMachine(id);
-            return NoContent();
+            try
+            {
+                var machine = await _machineService.StartCycle(id, cycleId);
+                return Ok(machine);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("{id}/stop")]
+        public async Task<ActionResult<Machine>> StopCycle(int id)
+        {
+            try
+            {
+                var machine = await _machineService.StopCycle(id);
+                return Ok(machine);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}/status")]
+        public async Task<ActionResult<bool>> IsCycleComplete(int id)
+        {
+            try
+            {
+                var isComplete = await _machineService.IsCycleComplete(id);
+                return Ok(isComplete);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMachine(int id)
+        {
+            try
+            {
+                await _machineService.RemoveMachine(id);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
